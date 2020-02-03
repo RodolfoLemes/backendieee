@@ -15,10 +15,14 @@ const MembroSchema = new mongoose.Schema({
         default: false
     },
 
+    admin: {
+        type: Boolean,
+        default: false
+    },
+
     ramo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ramo',
-        required: true
     },
 })
 

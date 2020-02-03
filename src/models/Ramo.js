@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate')
 
 const RamoSchema = new mongoose.Schema({
     name: {
@@ -29,5 +30,6 @@ const RamoSchema = new mongoose.Schema({
         ref: 'Membro',
     }],
 })
+RamoSchema.plugin(mongoosePaginate)
 
 module.exports = mongoose.model('Ramo', RamoSchema)
