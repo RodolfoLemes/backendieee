@@ -34,8 +34,17 @@ module.exports = {
             const posts = await Post.paginate({ }, {
                 page,
                 sort: { createAt: -1 },
+                populate: { 
+                    path: 'ramo', 
+                    select: ['name', 'icon', 'location']
+                },
                 limit: 10
             })
+
+            /* for(post in posts.docs) {
+                delete post.ramo.posts
+                delete post.ramo.membros
+            } */
 
             return res.send({ posts })
         } catch (error) {
