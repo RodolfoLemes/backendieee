@@ -41,11 +41,6 @@ module.exports = {
                 limit: 10
             })
 
-            /* for(post in posts.docs) {
-                delete post.ramo.posts
-                delete post.ramo.membros
-            } */
-
             return res.send({ posts })
         } catch (error) {
             return res.send({ error })
