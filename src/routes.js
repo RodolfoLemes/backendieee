@@ -12,6 +12,8 @@ routes.delete('/post', PostController.delete)
 
 // Ramo
 routes.post('/ramo', RamoController.create)
+routes.get('/ramo', RamoController.getRamos)
+routes.get('/ramo/:ramoId', RamoController.get)
 
 // Membro
 routes.post('/membro', MembroController.createAdmin)

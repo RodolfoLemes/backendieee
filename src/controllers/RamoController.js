@@ -29,5 +29,49 @@ module.exports = {
         } catch (error) {
             return res.send({ error })
         }
+    },
+
+    async getRamos(req, res) {
+        try {
+            const { page = 1 } = req.query
+            const ramos = await Ramo.paginate({ }, {
+                page,
+                select: ['icon'],
+                /* populate: [{
+                    path: 'membros',
+                    select: ['name', 'avatar', 'officer']
+                }, {
+                    path: 'posts',
+                    select: ['description', 'image']
+                }], */
+                limit: 10
+            })
+
+            return res.send({ ramos })
+        } catch (error) {
+            return res.send({ error })
+        }
+    },
+
+    async get(req, res) {
+        try {
+            // Pensar em fazer com paginação
+            const { ramoId } = req.params
+            const ramo = await Ramo.findById(ramoId)
+            .populate({
+                path: 'posts',
+                select: ['description', 'image'],
+                options: {
+                    limit: 5
+                }
+            }).populate({
+                path: 'membros',
+                select: ['name', 'avatar', 'officer']
+            })
+
+            return res.send({ ramo })
+        } catch (error) {
+            return res.send({ error })
+        }
     }
 }
