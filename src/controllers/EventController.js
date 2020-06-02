@@ -18,7 +18,7 @@ module.exports = {
   },
 
   async create(req, res) {
-    const { event } = req.body
+    const event = req.body
 
     const newEvent = await Event.create(event)
 

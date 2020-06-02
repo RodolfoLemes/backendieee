@@ -18,7 +18,7 @@ module.exports = {
   },
 
   async create(req, res) {
-    const { member } = req.body
+    const member = req.body
 
     const newMember = await Member.create(member)
 

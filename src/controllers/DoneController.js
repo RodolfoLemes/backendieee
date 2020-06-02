@@ -18,10 +18,18 @@ module.exports = {
   },
 
   async create(req, res) {
-    const { done } = req.body
+    const done = req.body
 
     const newDone = await Done.create(done)
 
     return res.send(newDone)
+  },
+
+  async createMany(req, res) {
+    const dones = req.body
+
+    dones.map(async element => await Done.create(element))
+
+    return res.send(true)
   }
 }
