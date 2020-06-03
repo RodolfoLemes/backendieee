@@ -20,8 +20,6 @@ module.exports = {
   async create(req, res) {
     const project = req.body
 
-    console.log(project)
-
     const newProject = await Project.create(project)
 
     return res.send(newProject)
