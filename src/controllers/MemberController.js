@@ -23,5 +23,13 @@ module.exports = {
     const newMember = await Member.create(member)
 
     return res.send(newMember)
+  },
+
+  async createMany(req, res) {
+    const members = req.body
+
+    members.map(async element => await Member.create(element))
+
+    return res.send(true)
   }
 }
