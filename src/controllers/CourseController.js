@@ -4,15 +4,15 @@ const transporter = require('../config/mailer')
 module.exports = {
   async create(req, res) {
     const { courseName, name, email, select } = req.body
-
+    
     try {
-      await Course.create({
+      const response = await Course.create({
         name,
         email,
         select,
         course: courseName
       })
-  
+      console.log(course)
       let info = await transporter.sendMail({
           from: 'ieeeuem@gmail.com', // sender address
           to: email, // list of receivers
@@ -26,6 +26,7 @@ module.exports = {
       })
 
       if(info) {
+        console.log(info)
         return res.send(true)
       }
     } catch (error) {

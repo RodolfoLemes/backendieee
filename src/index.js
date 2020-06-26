@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({ extended:true }))
+//app.use(express.urlencoded({ extended:true }))
 app.use('/api', routes)
 app.use('/member', memberRoutes)
 app.use('/project', projectRoutes)
