@@ -10,7 +10,7 @@ const Course = new Schema({
 
   course: String,
 
-  selection: {
+  select: {
     type: String
   },
 
