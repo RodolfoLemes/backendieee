@@ -12,7 +12,7 @@ module.exports = {
         select,
         course: courseName
       })
-      console.log(course)
+      console.log(response)
       let info = await transporter.sendMail({
           from: 'ieeeuem@gmail.com', // sender address
           to: email, // list of receivers
