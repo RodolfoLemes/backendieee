@@ -37,9 +37,9 @@ routes.post('/contact', async (req, res) => {
         if(isEmail(email)) {
             try {
                 let info = await transporter.sendMail({
-                    from: email, // sender address
+                    from: 'ieeeuem@gmail.com', // sender address
                     to: 'rodolfo_fero@hotmail.com', // list of receivers
-                    subject: "CONTATO", // Subject line
+                    subject: 'contato de ' + email, // Subject line
                     text: msg, // plain text body
                 })
                 if(info) {
