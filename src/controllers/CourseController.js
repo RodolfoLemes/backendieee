@@ -2,6 +2,28 @@ const Course = require('../models/Course')
 const transporter = require('../config/mailer')
 
 module.exports = {
+  async getList(req, res) {
+    const { sort, filter, range } = req.query
+    
+    if(filter) {
+      var obj = JSON.parse(filter)
+      const courses = await Course.find(obj)
+      
+      return res.send(courses)
+    }
+    const courses = await Course.find()
+
+    return res.send(courses)
+  },
+
+  async getOne(req, res) {
+    const { doneId } = req.params
+
+    const done = await Done.findById(doneId)
+
+    return res.send(done)
+  },
+
   async create(req, res) {
     const { courseName, name, email, select } = req.body
     
