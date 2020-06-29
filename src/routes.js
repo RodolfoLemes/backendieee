@@ -1,4 +1,5 @@
 const express = require('express')
+const axios = require('axios')
 const routes = express.Router()
 
 const PostController = require('./controllers/PostController')
@@ -56,4 +57,18 @@ routes.post('/contact', async (req, res) => {
 
     return res.send(true)
 })
+
+const secret = '6LeOI6sZAAAAAHCOjAJEeWTtW_yDLHjliMWS22pA'
+// reCaptcha
+routes.post('/reCaptcha', async (req, res) => {
+    const { response } = req.body
+
+    const google = await axios.post('https://www.google.com/recaptcha/api/siteverify', {
+        secret,
+        response
+    })
+
+    res.send(google.data)
+})
+
 module.exports = routes
