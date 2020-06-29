@@ -3,25 +3,35 @@ const transporter = require('../config/mailer')
 
 module.exports = {
   async getList(req, res) {
-    const { sort, filter, range } = req.query
+    const { sort, filter, range, select } = req.query
     
-    if(filter) {
-      var obj = JSON.parse(filter)
-      const courses = await Course.find(obj)
+    try {
+      var sortObj = JSON.parse(sort || null)
+      sortObj = sortObj.join(" ")
+      var filterObj = JSON.parse(filter || null)
+      //var rangeObj = JSON.parse(range || null)
+  
+      var selectObj = JSON.parse(select || null)
+      selectObj = selectObj.join(" ")
+  
+      const courses = await Course
+        .find(filterObj)
+        .sort(sortObj)
+        .select(selectObj)
       
       return res.send(courses)
+    } catch (error) {
+      console.log(error)
+      return res.status(500).send('Error')
     }
-    const courses = await Course.find()
-
-    return res.send(courses)
   },
 
   async getOne(req, res) {
-    const { doneId } = req.params
+    const { courseId } = req.params
 
-    const done = await Done.findById(doneId)
+    const course = await Course.findById(courseId)
 
-    return res.send(done)
+    return res.send(course)
   },
 
   async create(req, res) {
