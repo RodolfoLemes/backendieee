@@ -63,12 +63,14 @@ const secret = '6LeOI6sZAAAAAHCOjAJEeWTtW_yDLHjliMWS22pA'
 routes.post('/reCaptcha', async (req, res) => {
     const { response } = req.body
 
-    const google = await axios.post('https://www.google.com/recaptcha/api/siteverify', {
-        secret,
-        response
+    const google = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&&response=${response}`, 
+    null, {
+        headers: { 
+            "Content-Type": "application/x-www-form-urlencoded" 
+        },
     })
 
-    res.send(google.data)
+    return res.send(google.data)
 })
 
 module.exports = routes
