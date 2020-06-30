@@ -7,12 +7,12 @@ module.exports = {
     
     try {
       var sortObj = JSON.parse(sort || null)
-      sortObj = sortObj.join(" ")
+      if(sortObj) sortObj = sortObj.join(" ")
       var filterObj = JSON.parse(filter || null)
       //var rangeObj = JSON.parse(range || null)
   
       var selectObj = JSON.parse(select || null)
-      selectObj = selectObj.join(" ")
+      if(selectObj) selectObj = selectObj.join(" ")
   
       const courses = await Course
         .find(filterObj)
@@ -22,7 +22,7 @@ module.exports = {
       return res.send(courses)
     } catch (error) {
       console.log(error)
-      return res.status(500).send('Error')
+      return res.status(500).send(errro)
     }
   },
 
