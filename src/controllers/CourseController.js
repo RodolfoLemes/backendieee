@@ -19,7 +19,7 @@ module.exports = {
         .sort(sortObj)
         .select(selectObj)
       
-      return res.send(courses)
+      return res.send({ total: courses.length, courses })
     } catch (error) {
       console.log(error)
       return res.status(500).send(errro)
