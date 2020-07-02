@@ -51,9 +51,10 @@ module.exports = {
           subject: `Confirmação curso ${courseName} do IEEE UEM`, // Subject line
           text: `Prezados,
           Agradecemos sua inscrição no nosso curso de ${courseName}!
-          A plataforma a ser utilizada será o Discord, por meio do servidor do Ramo Estudantil IEEE UEM.
-          Para acessá-lo, basta fazer o download do programa e acessar o link: https://discord.gg/kxN4yFE
-          As salas estarão nomeadas com o respectivo curso. Caso haja dúvidas, favor entrar em contato conosco a partir deste e-mail, ou a partir do contato:
+          A plataforma a ser utilizada será o Google Meet, por meio do link https://meet.google.com/nys-qdjh-dzu.
+          Para acessá-lo, basta possuir conta google e pedir para adentrar na reunião no dia e horário do curso respectivo.
+          Caso queira interagir com os membros e colaboradores do IEEE UEM via Discord, basta acessar o link: https://discord.gg/kxN4yFE
+          Caso haja dúvidas, favor entrar em contato conosco a partir desse e-mail, ou do contato:
           (44) 98842-1250 - Leonichel` // plain text body,
       })
 
