@@ -40,5 +40,18 @@ module.exports = {
     events.map(async element => await Event.create(element))
 
     return res.send(true)
+  },
+
+  async delete(req, res) {
+    const { eventId } = req.params
+
+    try {
+      const event = await Event.findOneAndDelete({ _id: eventId })
+
+      return res.send(event)
+    } catch (err) {
+      console.log(err)
+      return res.send(false)
+    }
   }
 }
