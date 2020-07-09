@@ -1,5 +1,6 @@
 const express = require('express')
 const axios = require('axios')
+require('dotenv').config()
 const routes = express.Router()
 
 const PostController = require('./controllers/PostController')
@@ -11,6 +12,17 @@ function isEmail(email) {
 	var re = /\S+@\S+\.\S+/;
   return re.test(email);
 }
+
+// Auth SITE
+routes.post('/auth', (req, res) => {
+    const { login, password } = req.body
+
+    if(login === process.env.ADMIN && password === process.env.PASSWORD) {
+        return res.send(true)
+    } else {
+        return rese.send(false)
+    }
+})
 
 // Feed
 routes.get('/feed', PostController.getPosts)
