@@ -20,7 +20,7 @@ routes.post('/auth', (req, res) => {
     if(login === process.env.ADMIN && password === process.env.PASSWORD) {
         return res.send(true)
     } else {
-        return rese.send(false)
+        return res.send(false)
     }
 })
 
