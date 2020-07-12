@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const enforce = require('express-sslify')
 require('dotenv/config')
 
 const routes = require('./routes')
@@ -16,7 +15,6 @@ const app = express()
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended:true }))
