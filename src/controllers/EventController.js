@@ -1,57 +1,59 @@
-const Event = require('../models/Event')
+const Event = require('../models/Event');
 
 module.exports = {
   async getList(req, res) {
-    const { sort = 1, filter, range } = req.query
+    const { sort = 1, filter, range } = req.query;
 
-    if(filter) {
-      const date = JSON.parse(filter).date
-      const year = new Date(date).getFullYear()
-      const month = new Date(date).getMonth() + 1
-      const gte = `${year.toString()}-${month.toString()}-01`
-      const lt = `${year.toString()}-${month.toString()}-31`
-      var events = await Event.find({ date: {$gte: gte, $lt: lt} }).sort({ date: 1 })
+    if (filter) {
+      const date = JSON.parse(filter).date;
+      const year = new Date(date).getFullYear();
+      const month = new Date(date).getMonth() + 1;
+      const gte = `${year.toString()}-${month.toString()}-01`;
+      const lt = `${year.toString()}-${month.toString()}-31`;
+      var events = await Event.find({ date: { $gte: gte, $lt: lt } }).sort({
+        date: 1,
+      });
     } else {
-      var events = await Event.find().sort({ date: 1 })
+      var events = await Event.find().sort({ date: 1 });
     }
 
-    return res.send(events)
+    return res.send(events);
   },
 
   async getOne(req, res) {
-    const { eventId } = req.params
+    const { eventId } = req.params;
 
-    const event = await Event.findById(eventId)
+    const event = await Event.findById(eventId);
 
-    return res.send(event)
+    return res.send(event);
   },
 
   async create(req, res) {
-    const event = req.body
+    const event = req.body;
 
-    const newEvent = await Event.create(event)
+    const newEvent = await Event.create(event);
 
-    return res.send(newEvent)
+    return res.send(newEvent);
   },
 
   async createMany(req, res) {
-    const events = req.body
+    const events = req.body;
 
-    events.map(async element => await Event.create(element))
+    events.map(async element => await Event.create(element));
 
-    return res.send(true)
+    return res.send(true);
   },
 
   async delete(req, res) {
-    const { eventId } = req.params
+    const { eventId } = req.params;
 
     try {
-      const event = await Event.findOneAndDelete({ _id: eventId })
+      const event = await Event.findOneAndDelete({ _id: eventId });
 
-      return res.send(event)
+      return res.send(event);
     } catch (err) {
-      console.log(err)
-      return res.send(false)
+      console.log(err);
+      return res.send(false);
     }
-  }
-}
+  },
+};

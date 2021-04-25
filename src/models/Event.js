@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const Event = new Schema({
   description: {
@@ -7,12 +7,12 @@ const Event = new Schema({
   },
 
   date: {
-    type: Date
+    type: Date,
   },
 
   chapter: {
-    type: String
-  }
-})
+    type: String,
+  },
+});
 
-module.exports = mongoose.model('Event', Event)
+module.exports = mongoose.model('Event', Event);

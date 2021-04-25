@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const Member = new Schema({
   email: String,
@@ -14,13 +14,15 @@ const Member = new Schema({
 
   special: {
     type: Boolean,
-    default: false
+    default: false,
   },
 
-  projects: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Project'
-  }]
-})
+  projects: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Project',
+    },
+  ],
+});
 
-module.exports = mongoose.model('Member', Member)
+module.exports = mongoose.model('Member', Member);

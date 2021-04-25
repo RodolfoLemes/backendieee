@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const Done = new Schema({
   title: String,
@@ -9,8 +9,8 @@ const Done = new Schema({
   },
 
   date: {
-    type: Date
-  }
-})
+    type: Date,
+  },
+});
 
-module.exports = mongoose.model('Done', Done)
+module.exports = mongoose.model('Done', Done);

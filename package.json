@@ -1,5 +1,6 @@
 {
   "name": "backendieee",
+  "author": "Rodolfo Lemes <rodolfo_fero@hotmail.com",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

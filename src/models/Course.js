@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const Course = new Schema({
   name: String,
@@ -11,13 +11,13 @@ const Course = new Schema({
   course: String,
 
   select: {
-    type: String
+    type: String,
   },
 
   createAt: {
     type: Date,
-    default: Date.now
-  }
-})
+    default: Date.now,
+  },
+});
 
-module.exports = mongoose.model('Course', Course)
+module.exports = mongoose.model('Course', Course);
